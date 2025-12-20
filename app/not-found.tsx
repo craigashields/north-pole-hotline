@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function NotFound() {
   return (
     <main
@@ -6,7 +8,8 @@ export default function NotFound() {
         display: "grid",
         placeItems: "center",
         padding: 24,
-        background: "linear-gradient(145deg, #0b1626 0%, #0a1020 60%, #0a0e1a 100%)",
+        background:
+          "linear-gradient(145deg, #0b1626 0%, #0a1020 60%, #0a0e1a 100%)",
         color: "#fff9f2",
         textAlign: "center",
       }}
@@ -30,7 +33,7 @@ export default function NotFound() {
         <p style={{ margin: "0 0 18px", opacity: 0.78, lineHeight: 1.5 }}>
           Looks like this path got lost in the snow. Head back and try again.
         </p>
-        <a
+        <Link
           href="/"
           style={{
             display: "inline-flex",
@@ -47,7 +50,7 @@ export default function NotFound() {
           }}
         >
           Return to the hotline
-        </a>
+        </Link>
       </div>
     </main>
   );

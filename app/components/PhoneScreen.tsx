@@ -111,9 +111,6 @@ const PhoneScreen = () => {
 
   const start = useCallback(async () => {
     try {
-      // setStatusText("Requesting microphone...");
-      // await navigator.mediaDevices.getUserMedia({ audio: true });
-
       setStatusText("Dialing Santa...");
       await playFestiveChime();
       setStatusText("Connecting to Santa...");
