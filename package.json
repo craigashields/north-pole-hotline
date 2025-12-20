@@ -1,14 +1,29 @@
 {
-  "name": "santa-call",
+  "name": "north-pole-hotline",
   "version": "0.1.0",
   "private": true,
+  "description": "Festive Santa-call experience with ElevenLabs Realtime and a Christmas phone UI.",
+  "keywords": [
+    "santa",
+    "christmas",
+    "realtime",
+    "elevenlabs",
+    "nextjs",
+    "tailwind"
+  ],
+  "engines": {
+    "node": ">=18.18"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@elevenlabs/react": "^0.12.3",
+    "lucide-react": "^0.562.0",
     "next": "16.1.0",
     "react": "19.2.3",
     "react-dom": "19.2.3"
@@ -21,6 +36,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.0",
     "tailwindcss": "^4",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "^5"
   }
 }

@@ -1,13 +1,72 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --background: 220 20% 10%;
+  --foreground: 0 0% 98%;
 
+  --card: 220 20% 14%;
+  --card-foreground: 0 0% 98%;
+
+  --popover: 220 20% 14%;
+  --popover-foreground: 0 0% 98%;
+
+  --primary: 0 72% 51%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 142 72% 45%;
+  --secondary-foreground: 0 0% 100%;
+
+  --muted: 220 15% 20%;
+  --muted-foreground: 220 10% 60%;
+
+  --accent: 45 93% 58%;
+  --accent-foreground: 220 20% 10%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 220 15% 25%;
+  --input: 220 15% 25%;
+  --ring: 0 72% 51%;
+
+  --radius: 1rem;
+
+  /* Custom Christmas colors */
+  --christmas-red: 0 72% 51%;
+  --christmas-green: 142 72% 45%;
+  --christmas-gold: 45 93% 58%;
+  --snow-white: 200 20% 95%;
+  --phone-dark: 220 25% 8%;
+  --phone-bezel: 220 20% 5%;
+
+  /* Gradients */
+  --gradient-festive: linear-gradient(
+    180deg,
+    hsl(220 25% 12%) 0%,
+    hsl(220 30% 6%) 100%
+  );
+  --gradient-call-accept: linear-gradient(
+    135deg,
+    hsl(142 72% 45%) 0%,
+    hsl(142 72% 35%) 100%
+  );
+  --gradient-call-decline: linear-gradient(
+    135deg,
+    hsl(0 72% 51%) 0%,
+    hsl(0 72% 41%) 100%
+  );
+  --gradient-ring-pulse: radial-gradient(
+    circle,
+    hsl(0 72% 51% / 0.3) 0%,
+    transparent 70%
+  );
+}
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-christmas-red: hsl(var(--christmas-red));
+  --color-christmas-green: hsl(var(--christmas-green));
+  --color-christmas-gold: hsl(var(--christmas-gold));
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -23,4 +82,149 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.phone-screen {
+  background: var(--gradient-festive);
+  box-shadow: inset 0 0 100px rgba(255, 255, 255, 0.02),
+    0 25px 50px -12px rgba(0, 0, 0, 0.8);
+}
+
+.glass-effect {
+  background: hsl(var(--muted) / 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.call-button-accept {
+  background: var(--gradient-call-accept);
+  box-shadow: 0 4px 20px hsl(var(--christmas-green) / 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.call-button-decline {
+  background: var(--gradient-call-decline);
+  box-shadow: 0 4px 20px hsl(var(--christmas-red) / 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.avatar-glow {
+  box-shadow: 0 0 60px hsl(var(--christmas-red) / 0.5),
+    0 0 120px hsl(var(--christmas-gold) / 0.3);
+}
+
+.text-shadow-glow {
+  text-shadow: 0 0 20px hsl(var(--foreground) / 0.3);
+}
+
+/* Animations */
+@keyframes pulse-ring {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.3;
+  }
+}
+
+@keyframes pulse-ring-outer {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 0.1;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    filter: blur(40px);
+  }
+  50% {
+    opacity: 0.8;
+    filter: blur(60px);
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s ease-in-out infinite;
+}
+
+.animate-pulse-ring-outer {
+  animation: pulse-ring-outer 2s ease-in-out infinite 0.3s;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-snowfall {
+  animation: snowfall linear infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    hsl(var(--snow-white) / 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 0.5s ease-in-out infinite;
 }
