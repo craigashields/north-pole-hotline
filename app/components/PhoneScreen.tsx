@@ -162,7 +162,22 @@ const PhoneScreen = () => {
       setStatusText(`Talking to Santa`);
     } catch (err) {
       console.error(err);
-      setStatusText("Could not start (mic permission?)");
+      const name =
+        err && typeof err === "object" && "name" in err
+          ? String((err as Error).name).toLowerCase()
+          : "";
+      if (name.includes("notallowed")) {
+        setStatusText("Mic blocked — enable microphone for this site");
+      } else if (
+        name.includes("notfound") ||
+        name.includes("devicesnotfound")
+      ) {
+        setStatusText("No microphone found");
+      } else if (name.includes("notreadable") || name.includes("abort")) {
+        setStatusText("Mic in use by another app");
+      } else {
+        setStatusText("Could not start (see console)");
+      }
     }
   }, [conversation, playFestiveChime]);
 
