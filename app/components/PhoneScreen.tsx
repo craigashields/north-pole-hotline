@@ -11,43 +11,21 @@ import CallButton from "./CallButton";
 import Snowflake from "./Snowflake";
 import { MessageCircle } from "lucide-react";
 import { useConversation } from "@elevenlabs/react";
-
-// ✅ Add achievements here (edit these however you like)
-const KIDS_CONTEXT = [
-  {
-    name: "Robin",
-    age: 5,
-    gender: "boy",
-    achievements: [
-      "worked hard at school",
-      "showed kindness to others",
-      "fantastic creativity in art and crafts",
-    ],
-  },
-  {
-    name: "Dexter",
-    age: 13,
-    gender: "boy",
-    achievements: [
-      "was a great helper at home",
-      "Improved a lot at school, putting in extra effort",
-      "practised basketball and becoming a great player",
-    ],
-  },
-  {
-    name: "Luke",
-    age: 4,
-    gender: "boy",
-    achievements: [
-      "was brave with everything going on",
-      "has start learning to read",
-      "made lots of new friends at school",
-    ],
-  },
-];
+import { FAMILIES } from "../config/families";
+import { useSearchParams } from "next/navigation";
 
 const PhoneScreen = () => {
+  const searchParams = useSearchParams();
+  const familyName = searchParams.get("family") || "default";
+
   const [statusText, setStatusText] = useState("Ready");
+  const formatter = new Intl.ListFormat("en", {
+    style: "long",
+    type: "conjunction",
+  });
+  const family = FAMILIES[familyName] || FAMILIES.default;
+  const kidNames = family.kids.map((kid) => kid.name);
+  const formattedNames = formatter.format(kidNames);
 
   const conversation = useConversation({
     onConnect: () => setStatusText("Connected"),
@@ -145,17 +123,20 @@ const PhoneScreen = () => {
         agentId: process.env.NEXT_PUBLIC_ELEVENLABS_AGENT_ID!, // set in .env.local
         connectionType: "webrtc",
         dynamicVariables: {
-          all_children: "Dexter, Robin, and Luke",
+          all_children: formattedNames,
         },
+        userId: `family_${family.familyName.toLowerCase()}`,
       });
 
       // ✅ Send all kids + achievements once at call start (as an object, not JSON string)
       conversation.sendContextualUpdate?.(
         JSON.stringify({
-          kids: KIDS_CONTEXT,
+          kids: family.kids,
           // Optional: you can add an explicit turn-taking hint for Santa
           house_rule:
+            family.houseRule ??
             "Please speak to one child at a time and ask them to pass the phone after you finish.",
+          family: family.familyName,
         })
       );
 
