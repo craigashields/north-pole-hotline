@@ -12,21 +12,23 @@ import Snowflake from "./Snowflake";
 import { MessageCircle } from "lucide-react";
 import { useConversation } from "@elevenlabs/react";
 import { FAMILIES } from "../config/families";
-import { useSearchParams } from "next/navigation";
 
-const PhoneScreen = () => {
-  const searchParams = useSearchParams();
-  const familyName = searchParams.get("family") || "default";
+type PhoneScreenProps = {
+  familyId?: string;
+};
+
+const PhoneScreen = ({ familyId }: PhoneScreenProps) => {
+  const familyKey = familyId?.toLowerCase() || "default1";
+  const family = FAMILIES[familyKey] || FAMILIES.default;
 
   const [statusText, setStatusText] = useState("Ready");
+
   const formatter = new Intl.ListFormat("en", {
     style: "long",
     type: "conjunction",
   });
-  const family = FAMILIES[familyName] || FAMILIES.default;
   const kidNames = family.kids.map((kid) => kid.name);
   const formattedNames = formatter.format(kidNames);
-
   const conversation = useConversation({
     onConnect: () => setStatusText("Connected"),
     onDisconnect: () => setStatusText("Disconnected"),
@@ -157,7 +159,7 @@ const PhoneScreen = () => {
         setStatusText("Could not start (see console)");
       }
     }
-  }, [conversation, playFestiveChime]);
+  }, [conversation, family, playFestiveChime]);
 
   const stop = useCallback(async () => {
     await conversation.endSession();
