@@ -8,6 +8,11 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      "h-sm": { raw: "(max-height: 650px)" },
+      "h-md": { raw: "(max-height: 750px)" },
+      "h-lg": { raw: "(min-height: 751px)" },
+    },
     container: {
       center: true,
       padding: "2rem",

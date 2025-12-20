@@ -216,7 +216,7 @@ const PhoneScreen = ({ familyId }: PhoneScreenProps) => {
         <div className="absolute inset-2 rounded-[2.5rem] border border-muted/20" />
 
         {/* Phone screen */}
-        <div className="relative phone-screen rounded-[2.25rem] overflow-hidden min-h-[750px] flex flex-col">
+        <div className="relative phone-screen rounded-[2.25rem] overflow-hidden min-h-[90svh] flex flex-col">
           {/* Notch */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-phone-bezel rounded-b-2xl z-10 flex items-center justify-center">
             <div className="w-16 h-4 bg-phone-dark rounded-full flex items-center justify-center gap-2">

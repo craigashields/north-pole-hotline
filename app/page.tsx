@@ -8,7 +8,7 @@ export default async function Home({ searchParams }: HomeProps) {
   const params = await searchParams;
   const familyId = (params?.family ?? "default").toLowerCase();
   return (
-    <main className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30 flex items-center justify-center p-6">
+    <main className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30 flex items-center justify-center px-4 ">
       {/* Background decorations */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div
