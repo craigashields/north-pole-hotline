@@ -19,9 +19,9 @@ export const FAMILIES: Record<string, FamilyConfig> = {
         age: 5,
         gender: "boy",
         achievements: [
-          "worked hard at school",
-          "showed kindness to others",
-          "fantastic creativity in art and crafts",
+          "worked hard at school and getting lots of faces on the amaze board",
+          "showed lots of kindness to others, helping his friends who were sad",
+          "fantastic creativity in your fantastic drawings",
         ],
       },
       {
@@ -29,9 +29,9 @@ export const FAMILIES: Record<string, FamilyConfig> = {
         age: 13,
         gender: "boy",
         achievements: [
-          "was a great helper at home",
-          "Improved a lot at school, putting in extra effort",
-          "practised basketball and becoming a great player",
+          "Improved a huge amount at school this year, putting in extra effort and getting great results",
+          "practised hard at basketball, becoming a great player, team member and leader",
+          "has been a fantastic big brother and growing into a very kind young man",
         ],
       },
       {
@@ -39,8 +39,8 @@ export const FAMILIES: Record<string, FamilyConfig> = {
         age: 4,
         gender: "boy",
         achievements: [
-          "was brave with everything going on",
-          "has start learning to read",
+          "was very brave this year",
+          "has start learning to read and write. His writing is very good",
           "made lots of new friends at school",
         ],
       },
