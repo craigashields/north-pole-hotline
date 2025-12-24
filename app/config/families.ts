@@ -39,8 +39,8 @@ export const FAMILIES: Record<string, FamilyConfig> = {
         age: 4,
         gender: "boy",
         achievements: [
-          "was very brave this year",
-          "has start learning to read and write. His writing is very good",
+          "was very brave this year when playing Joseph in the nativity play.",
+          "has start learning to read and write. His writing is excellent and very neat!",
           "made lots of new friends at school",
         ],
       },
